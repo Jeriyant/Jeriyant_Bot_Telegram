@@ -1,5 +1,5 @@
 config telegramopenwrt 'global'
-	option key '2120913142:AAEYswR1KMJ3e_OIb_IXH_69hfJf0LAauRI'
+	option key '6207004770:AAHtjSCjiGUuAz_pifMGvNxgaeiRPSVv4vk'
 	option url 'https://api.telegram.org/bot'
 	option my_chat_id '123919367'
 	option timeout '60'
