@@ -1,0 +1,18 @@
+#!/bin/sh
+Name=`(zerotier-cli listnetworks | grep "OK" | awk '/listnetworks/{print $4}')`
+IP=`(zerotier-cli listnetworks | grep "OK" | awk '/listnetworks/{print $NF}')`
+Status=`(zerotier-cli info | awk '{print $NF}')`
+Network_id=`(zerotier-cli listnetworks | grep "OK" | awk '/listnetworks/{print $3}')`
+Access_Control=`(zerotier-cli listnetworks | grep "OK" | awk '/listnetworks/{print $7}')`
+Interface=`(zerotier-cli listnetworks | grep "OK" | awk '/listnetworks/{print $8}')`
+Address=`(zerotier-cli info | awk '{print $3}')`
+Version=`(zerotier-cli info | awk '{print $4}')`
+
+echo Nama : $Name
+echo Alamat IP : $IP
+echo Status : $Status
+echo Network ID : $Network_id
+echo Access Control : $Access_Control
+echo Interface : $Interface
+echo Address : $Address
+echo Version : $Version

@@ -1,0 +1,20 @@
+#!/bin/sh
+
+DEVICE="$1"
+NL="$2"
+File=/tmp/ping
+ping ${DEVICE} -c 5 &>$File; [ $? == 0 ] && echo -en "Ping ke ${DEVICE} 🟢 Online" || echo -en "Ping ke ${DEVICE} 🔴 Offline"
+if [ -z ${NL} ];then
+	echo -en "\n"
+fi
+min=$(cat $File | tail -2 | awk -F'/' 'NR==2{print $3}' | awk '{print $3}' | awk -F'.' 'NR==1{print $1}')
+max=$(cat $File | tail -2 | awk -F'/' 'NR==2{print $5}' | awk -F'.' 'NR==1{print $1}')
+avg=$(cat $File | tail -2 | awk -F'/' 'NR==2{print $4}' | awk -F'.' 'NR==1{print $1}')
+ttl=$(cat $File | awk '{print $6}' | grep "ttl" | awk -F'=' 'NR==1{print $2}')
+echo "----------Latency----------"
+echo "Minimal : $min ms"
+echo "Maximal : $max ms"
+echo "Rata-Rata : $avg ms"
+echo "TTL : $ttl"
+echo "---------------------------"
+rm -rf $file

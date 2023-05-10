@@ -1,0 +1,9 @@
+#!/bin/sh
+
+echo -en "JERIYANT-BOT OpenWRT v.1.0\nDaftar Perintah:\n\n"
+ALLPLUGINS=$(ls -1 -p | grep -v "/")
+for plug in $ALLPLUGINS
+do
+help=$(cat "help/${plug}")
+echo "[/${plug}](/${plug}) - ${help}"
+done

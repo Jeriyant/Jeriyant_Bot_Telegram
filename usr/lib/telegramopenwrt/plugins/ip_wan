@@ -1,0 +1,14 @@
+#!/bin/sh
+iface=`(uci get network.wan.device)`
+proto=`(uci get network.wan.proto)`
+alamat_ip=`(uci get network.wan.ipaddr)`
+netmask=`(uci get network.wan.netmask)`
+gateway=`(uci get network.wan.gateway)`
+dns=`(uci get network.wan.dns)`
+echo "Konfigurasi IP WAN"
+echo "Interface : $iface"
+echo "Protocol : $proto"
+echo "Alamat IP : $alamat_ip"
+echo "Netmask : $netmask"
+echo "Gateway : $gateway"
+echo "DNS : $dns"

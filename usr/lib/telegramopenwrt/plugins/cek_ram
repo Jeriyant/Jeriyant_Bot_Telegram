@@ -1,0 +1,9 @@
+#!/bin/sh
+
+Used=`(free | grep "Mem:" | awk '{print $3}' | awk '{ byte =$1 /1024/1024 ; printf "%.2fGB\n", byte }')`
+Free=`(free | grep "Mem:" | awk '{print $4}' | awk '{ byte =$1 /1024/1024 ; printf "%.2fGB\n", byte }')`
+Total=`(free | grep "Mem:" | awk '{print $2}' | awk '{ byte =$1 /1024/1024 ; printf "%.2fGB\n", byte }')`
+echo Memory / RAM
+echo Digunakan : $Used
+echo Bebas : $Free
+echo Total : $Total

@@ -1,0 +1,25 @@
+while read -r line; do
+# split each line into space-separated fields
+fields=$(echo $line | tr -s ' ')
+# extract the device name, IP address, MAC address, and lease start time
+device=$(echo $fields | cut -d' ' -f4)
+ip=$(echo $fields | cut -d' ' -f3)
+mac=$(echo $fields | cut -d' ' -f2)
+lease_start=$(echo $fields | cut -d' ' -f1)
+# convert the lease start time to a human-readable format
+lease_start_hr=$(date -d @$lease_start "+%d/%m/%Y %H:%M:%S %Z")
+# ping the IP address to check connectivity status
+ping -c 1 -w 1 $ip > /dev/null 2>&1
+if [ $? -eq 0 ]; then
+  status="Up"
+else
+  status="Down"
+fi
+# print the device information
+echo "Device: $device"
+echo "Tanggal: $lease_start_hr"
+echo "Alamat IP: $ip"
+echo "Mac: $mac"
+echo "Status: $status"
+echo "---------------------------"
+done < /tmp/dhcp.leases

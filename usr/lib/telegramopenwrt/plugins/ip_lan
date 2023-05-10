@@ -1,0 +1,10 @@
+#!/bin/sh
+iface=`(uci get network.lan.device)`
+proto=`(uci get network.lan.proto)`
+alamat_ip=`(uci get network.lan.ipaddr)`
+netmask=`(uci get network.lan.netmask)`
+echo "Konfigurasi IP LAN"
+echo "Interface  : $iface"
+echo "Protocol   : $proto"
+echo "Alamat IP  : $alamat_ip"
+echo "Netmask    : $netmask"

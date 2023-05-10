@@ -1,0 +1,9 @@
+#!/bin/sh
+hostname="$(uci get system.@system[0].hostname)"
+bot_token="$(uci get telegramopenwrt.global.key)"
+chat_id="$(uci get telegramopenwrt.global.my_chat_id)"
+file="/root/backup.tar.gz"
+sysupgrade -b "$file"
+curl -s "https://api.telegram.org/bot${bot_token}/sendMessage?chat_id=${chat_id}&text=Ini+File+Backup+${hostname}"
+curl -v -F "chat_id=${chat_id}" -F "document=@${file}" -F "text=okepunya" "https://api.telegram.org/bot${bot_token}/sendDocument"
+rm -rf "$file"

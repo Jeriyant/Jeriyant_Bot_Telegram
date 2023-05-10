@@ -1,0 +1,2 @@
+#!/bin/sh
+df -h | tail -n +2 | awk '{print "Mounted :",$6 "\nFilesystem :",$1 "\nSize :",$2 "\nUsed :",$3 "\nAvailable :",$4,"\n--------------------"}'

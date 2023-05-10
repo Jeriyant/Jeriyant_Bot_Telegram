@@ -1,0 +1,26 @@
+echo "Status Load Balanced"
+echo "-------------------"
+
+# Interface wan
+wan_status=$(mwan3 interfaces | grep "interface wan" | awk '{print $4}' | head -n 1)
+wan_uptime=$(mwan3 interfaces | grep "interface wan" | awk '{print $5}'| head -n 1)
+wan_tracking=$(mwan3 interfaces | grep "interface wan" | awk '{print $11}' | head -n 1)
+wan_balanced=$(mwan3 status | grep "wan (" | awk '{print $2}')
+echo "Interface : wan"
+echo "Status : $wan_status"
+echo "Uptime : $wan_uptime"
+echo "Tracking : $wan_tracking"
+echo "Balanced : $wan_balanced"
+echo "-------------------"
+
+# Interface wanb
+wanb_status=$(mwan3 interfaces | grep "interface wanb" | awk '{print $4}' | head -n 2)
+wanb_uptime=$(mwan3 interfaces | grep "interface wanb" | awk '{print $5}'| head -n 2)
+wanb_tracking=$(mwan3 interfaces | grep "interface wanb" | awk '{print $11}'| head -n 2)
+wanb_balanced=$(mwan3 status | grep "wanb (" | awk '{print $2}')
+echo "Interface : wanb"
+echo "Status : $wanb_status"
+echo "Uptime : $wanb_uptime"
+echo "Tracking : $wanb_tracking"
+echo "Balanced : $wanb_balanced"
+echo "-------------------"
