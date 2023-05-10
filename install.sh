@@ -14,7 +14,7 @@ then
     printf " Selesai "
     echo ""
     # Download File Bot Telegram
-    wget -q https://github.com/Jeriyant/bot-telegram-master/archive/refs/heads/main.zip -O main.zip
+    wget -q https://github.com/Jeriyant/Jeriyant_Bot_Telegram/archive/refs/heads/main.zip -O main.zip
     unzip main.zip > tbot.log
     folder=$(unzip -qql main.zip | sed -r '1 {s/([ ]+[^ ]+){3}\s+//;q}')
 
